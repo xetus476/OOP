@@ -4,7 +4,7 @@ using namespace std;
 
 
 int main(){
-    CStr a;
+    CStr a("Wata fa");
 
     cout<<a;
     cin.get();

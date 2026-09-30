@@ -10,8 +10,8 @@ class CStr{
 
     public:
        CStr();
-       //CStr(const char *stroke);
-       //CStr(int lenght);
+       CStr(const char *stroke_other);
+       CStr(int lenght);
        //CStr(char *stroke_this,char *copy_stroke);
        //~CStr();//DECONS
        friend std::ostream& operator<<(std::ostream& os, const CStr& str);
