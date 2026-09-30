@@ -58,6 +58,36 @@ CStr& CStr::operator=(const CStr& stroke_other){
     return *this;
 }
 
+CStr& CStr::operator=(const char* stroke_other){
+    if(!stroke_other) stroke_other="";
+
+    int len = std::strlen(stroke_other);
+    char* tmp = new char[len+1];
+    strcpy_s(tmp,len+1,stroke_other);
+    delete[] stroke;
+    stroke = tmp;
+    return *this;
+}
+
+CStr &CStr::operator+=(const CStr& stroke_other){
+    int len = std::strlen(stroke_other.stroke);
+    int len_2 = std::strlen(stroke);
+    char* tmp = new char[len+len_2+1];
+    strcpy_s(tmp, len+len_2+1, stroke);
+    strcat_s(tmp,len+len_2+1, stroke_other.stroke);
+
+    delete[] stroke;
+
+    stroke = tmp;
+    return *this;
+}
+
+// CStr CStr::operator+(const CStr& stroke_other){
+//     CStr strk(*stroke);
+//     strk += stroke_other.stroke;
+//     return strk;
+// }//доделать
+
 std::ostream& operator<<(std::ostream& os, const CStr& str) {
     return os << str.stroke;
 }

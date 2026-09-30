@@ -13,7 +13,13 @@ class CStr{
        CStr(const char *stroke_other);
        CStr(int lenght);
        CStr(const CStr& stroke_other);
+
        ~CStr();//DECONS
+
        CStr& operator = (const CStr& stroke_other);
+       CStr& operator = (const char* stroke_other);
+       CStr& operator += (const CStr& stroke_other);
+       CStr operator +(const CStr& stroke_other);
+
        friend std::ostream& operator<<(std::ostream& os, const CStr& str);
 };
