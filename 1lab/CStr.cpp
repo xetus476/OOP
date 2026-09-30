@@ -34,17 +34,28 @@ CStr::CStr(int lenght){
 CStr::CStr(const char* stroke_other){
     int len = std::strlen(stroke_other);
     stroke = new char[len+1];
-    std::strcpy(stroke, stroke_other);
+    strcpy_s(stroke,len+1, stroke_other);
 }
 
 CStr::CStr(const CStr& stroke_other){
     int len = std::strlen(stroke_other.stroke);
     stroke = new char[len+1];
-    std::strcpy(stroke, stroke_other.stroke);
+    strcpy_s(stroke,len+1, stroke_other.stroke);
 }
 
 CStr::~CStr(){
-    delete stroke;
+    delete[] stroke;
+}
+
+CStr& CStr::operator=(const CStr& stroke_other){
+    if(this != &stroke_other){
+        int len = std::strlen(stroke_other.stroke);
+        char* tmp = new char[len+1];
+        strcpy_s(tmp,len+1, stroke_other.stroke);
+        delete[] stroke;
+        stroke = tmp;
+    }
+    return *this;
 }
 
 std::ostream& operator<<(std::ostream& os, const CStr& str) {

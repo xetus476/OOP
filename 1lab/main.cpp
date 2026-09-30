@@ -5,7 +5,8 @@ using namespace std;
 
 int main(){
     CStr a("Wata fa");
-    CStr b = a;
+    CStr b;
+    b=a;
 
     cout << "Content a: " << a << endl;
     cout << "Content b: " << b << endl;
