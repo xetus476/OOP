@@ -37,6 +37,16 @@ CStr::CStr(const char* stroke_other){
     std::strcpy(stroke, stroke_other);
 }
 
+CStr::CStr(const CStr& stroke_other){
+    int len = std::strlen(stroke_other.stroke);
+    stroke = new char[len+1];
+    std::strcpy(stroke, stroke_other.stroke);
+}
+
+CStr::~CStr(){
+    delete stroke;
+}
+
 std::ostream& operator<<(std::ostream& os, const CStr& str) {
     return os << str.stroke;
 }
